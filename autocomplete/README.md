@@ -1,3 +1,16 @@
+# Material UI/core - TextField, Typograpy, Button, 
+# Material UI/lab -  Autocomplete
+
+Create a reactJS Application using MaterialUI for Autocompletion
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
