@@ -24,6 +24,8 @@ return (
     marginTop:'10rem' }}>
       <Typography variant="h4">Submit you details</Typography>
 <TextField
+      data-testid="name"
+
        style={{marginTop:'2rem'}} 
         id="name"
         label="Name"
@@ -31,6 +33,7 @@ return (
         onChange={(event) => setName(event.target.value)}
       />
       <TextField
+      data-testid="age"
       style={{marginTop:'2rem'}}
         id="age"
         label="Age"
@@ -38,10 +41,11 @@ return (
         value={age}
         onChange={(event) => setAge(event.target.value)}
       />
-  <Button style={{marginTop:'2rem'}} onClick={handleClick}>Submit</Button>
+  <Button data-testid="button" style={{marginTop:'2rem'}} onClick={handleClick}>Submit</Button>
   <Snackbar
+        data-testid="snackbar"
         open={open}
-        autoHideDuration={3000} // Snackbar will close after 3 seconds
+        autoHideDuration={3000} 
         onClose={handleClose}
         message="Successfully Completed"
       />

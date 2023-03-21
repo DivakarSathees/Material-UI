@@ -22,14 +22,14 @@ marginTop:'8rem'}}
   >
     <div>
       <label>Height (cm)</label>
-      <Slider value={height} min={100} max={250} step={1} onChange={(event, newValue) => setHeight(newValue)} />
-      <TextField type="number" value={height} onChange={(event) => setHeight(event.target.value)} />
+      <Slider data-testid="slider" value={height} min={100} max={250} step={1} onChange={(event, newValue) => setHeight(newValue)} />
+      <TextField data-testid="height" type="number" value={height} onChange={(event) => setHeight(event.target.value)} />
       </div>
       <div style={{marginTop:'2rem'}}>
         <label>Weight (kg)</label>&nbsp;
-        <TextField type="number" value={weight} onChange={(event) => setWeight(event.target.value)} />
+        <TextField data-testid="weight" type="number" value={weight} onChange={(event) => setWeight(event.target.value)} />
         </div>
-        <Button variant="contained" color="primary" onClick={calculateBmi} style={{marginTop:"2rem"}}>
+        <Button data-testid="button" variant="contained" color="primary" onClick={calculateBmi} style={{marginTop:"2rem"}}>
           Calculate BMI
 </Button>
 </form>

@@ -8,13 +8,20 @@ function App() {
     setCount(count + 1);
   };
 
+  const handleDecrement = () => {
+    setCount(count - 1);
+  };
+
   return (
     <div 
-    style={{  marginLeft: '40rem', marginTop: '10rem' }}
+    style={{  marginLeft: '35rem', marginTop: '10rem' }}
     >
       
-      <Button data-testid='button' variant="contained" color="primary" onClick={handleClick}>
-        Click me
+      <Button data-testid='increment' variant="contained" color="primary" onClick={handleClick}>
+        Increment
+      </Button>&nbsp;&nbsp;
+      <Button data-testid='decrement' variant="contained" color="primary" onClick={handleDecrement}>
+        Decrement
       </Button>
       <p>Count: {count}</p>
     </div>

@@ -16,10 +16,12 @@ const options = [
 function App() {
   const [name, setName] = useState('');
   const [selectedOption, setSelectedOption] = useState(null);
+  const [submitted, setSubmitted] = useState(false);
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(`Hello, ${name}! Your favorite fruit is ${selectedOption.label}.`);
+    setSubmitted(true);
   };
 
   
@@ -34,12 +36,14 @@ function App() {
       <Typography variant="h4">Enter your name favourite fruit : </Typography>
       <TextField
        style={{marginTop:'2rem'}} 
+        data-testid='name'
         id="name"
         label="Name"
         value={name}
         onChange={(event) => setName(event.target.value)}
       />
       <Autocomplete
+      data-testid="autocomplete"
       options={options}
       getOptionLabel={(option) => option.label}
       value={selectedOption}
@@ -54,9 +58,14 @@ function App() {
         />
       )}
     />
-    <Button style={{marginTop:'2rem'}} variant="contained" color="primary" type="submit">
+    <Button data-testid='button' style={{marginTop:'2rem'}} variant="contained" color="primary" type="submit">
         Submit
       </Button>
+      {submitted && (
+        <div style={{marginTop: '2rem'}}>
+          <Typography variant="h5">Hello, {name}! Your favorite fruit is {selectedOption?.label || 'unknown'}.</Typography>
+        </div>
+      )}
     </form>
   );
 }

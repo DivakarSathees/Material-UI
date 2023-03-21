@@ -1,36 +1,67 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
-import Button from '@material-ui/core/Button';
 
 describe('Button', () => {
-  it('should call onClick handler when clicked', () => {
-    const handleClick = jest.fn();
-    const { getByText } = render(
-      <Button variant="contained" color="primary" onClick={handleClick}>
-        Click me
-      </Button>
-      // <MemoryRouter>
-      // <App />
-      // </MemoryRouter>
+  it('increment button should be there', () => {
+   render(
+      <App />
     );
 
-    const button = getByText('Click me');
+    const button = screen.getByTestId('increment');
     fireEvent.click(button);
+    expect(button).toBeInTheDocument()
 
-    expect(handleClick).toHaveBeenCalled();
   });
+  it('decrement button should be there', () => {
+    render(
+       <App />
+     );
+ 
+     const button = screen.getByTestId('decrement');
+     fireEvent.click(button);
+     expect(button).toBeInTheDocument()
+ 
+   });
+
 });
 
 describe('ClickCounter', () => {
   it('should increment count when button is clicked', () => {
     const { getByText } = render(<App />);
-    const button = getByText('Click me');
-    const countDisplay = getByText('Count: 0');
+    const button = screen.getByTestId('increment');
+    const countDisplay = getByText(/0\b/);
 
     fireEvent.click(button);
 
-    expect(countDisplay).toHaveTextContent('Count: 1');
+    expect(countDisplay).toHaveTextContent(/1\b/);
   });
+
+  it('should decrement count when button is clicked', () => {
+    const { getByText } = render(<App />);
+    const button = screen.getByTestId('decrement');
+    const countDisplay = getByText(/0\b/);
+
+    fireEvent.click(button);
+
+    expect(countDisplay).toHaveTextContent(/-1\b/);
+  });
+
+
+
+  
+
+  it('should increment count 2 when button is clicked 2 times', () => {
+    const { getByText } = render(<App />);
+    const button = screen.getByTestId('increment');
+    const countDisplay = getByText(/0\b/);
+
+    fireEvent.click(button);
+    fireEvent.click(button);
+
+    expect(countDisplay).toHaveTextContent(/2\b/);
+  });
+
+
 });
 
 
